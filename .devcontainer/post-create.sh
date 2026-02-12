@@ -4,14 +4,20 @@ set -e
 
 echo "🚀 Setting up Agentic Underwriting development environment..."
 
+# Get the workspace root directory
+WORKSPACE_ROOT="${CONTAINERWORKSPACE:-/workspaces/$(basename $(pwd))}"
+if [ ! -d "$WORKSPACE_ROOT" ]; then
+  WORKSPACE_ROOT=$(pwd)
+fi
+
 # Install backend dependencies
 echo "📦 Installing backend dependencies..."
-cd /workspaces/agentic-underwriting/agentic-underwriting-backend
+cd "$WORKSPACE_ROOT/agentic-underwriting-backend"
 pip install -r requirements.txt
 
 # Install frontend dependencies
 echo "📦 Installing frontend dependencies..."
-cd /workspaces/agentic-underwriting/agentic-underwriting-ui
+cd "$WORKSPACE_ROOT/agentic-underwriting-ui"
 npm ci
 
 echo "✅ Development environment setup complete!"

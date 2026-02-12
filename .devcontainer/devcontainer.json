@@ -63,6 +63,7 @@
   "postCreateCommand": "bash .devcontainer/post-create.sh",
 
   "remoteEnv": {
-    "PYTHONUNBUFFERED": "1"
+    "PYTHONUNBUFFERED": "1",
+    "CONTAINERWORKSPACE": "${containerWorkspaceFolder}"
   }
 }
